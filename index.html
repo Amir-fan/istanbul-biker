@@ -24,7 +24,7 @@
       <a href="#gallery">Gallery</a>
       <a href="#contact">Contact</a>
     </nav>
-    <a class="nav-cta" href="#contact"><span>Book a ride</span><b aria-hidden="true">↗</b></a>
+    <a class="nav-cta" href="#booking" data-booking-open><span>Book a ride</span><b aria-hidden="true">↗</b></a>
   </header>
 
   <main id="main">
@@ -35,7 +35,7 @@
         <h1 id="hero-title"><span>Not just</span><strong>A ride.</strong></h1>
         <p class="hero-intro">Experience Istanbul through motorcycles, roads, people and unforgettable rides.</p>
         <div class="hero-actions">
-          <a class="action action-light" href="#contact"><span>Book your ride</span><b>↗</b></a>
+          <a class="action action-light" href="#booking" data-booking-open><span>Book your ride</span><b>↗</b></a>
           <a class="text-link" href="#about">Discover Istanbul Biker <span>↓</span></a>
         </div>
       </div>
@@ -70,7 +70,7 @@
           <div class="card-top"><span>01 / RIDE</span><span>ISTANBUL, TR</span></div>
           <div class="card-bottom">
             <div><h3>Ride<br>Istanbul</h3><p>City lights, coast roads and a route shaped around the way you ride.</p></div>
-            <a class="square-link" href="#contact" aria-label="Book Ride Istanbul">↗</a>
+            <a class="square-link" href="#booking" data-booking-open data-ride="city" aria-label="Book Ride Istanbul">↗</a>
           </div>
         </article>
 
@@ -79,7 +79,7 @@
           <h3>Ride<br><em>Together</em></h3>
           <img src="assets/red-bike.png" alt="Red sport motorcycle inside the Istanbul Biker showroom" width="339" height="472" loading="lazy">
           <ul aria-label="Group experience types"><li>Group rides</li><li>Private</li><li>Events</li></ul>
-          <a class="slash-link" href="#contact" aria-label="Book a group ride">↗</a>
+          <a class="slash-link" href="#booking" data-booking-open data-ride="group" aria-label="Book a group ride">↗</a>
         </article>
 
         <article class="experience-card card-moments reveal">
@@ -145,7 +145,7 @@
       <h2 id="cta-title">Ready<br><em>to ride?</em></h2>
       <p class="cta-copy">Your next Istanbul experience starts on two wheels.</p>
       <div class="cta-actions">
-        <a class="action action-dark" href="https://wa.me/?text=Merhaba%20Istanbul%20Biker%2C%20bir%20ride%20experience%20rezervasyonu%20yapmak%20istiyorum." target="_blank" rel="noreferrer"><span>Book the experience</span><b>↗</b></a>
+        <a class="action action-dark" href="#booking" data-booking-open><span>Book the experience</span><b>↗</b></a>
         <a class="action action-outline" href="https://wa.me/?text=Merhaba%20Istanbul%20Biker%2C%20bir%20ride%20experience%20hakkinda%20bilgi%20almak%20istiyorum." target="_blank" rel="noreferrer"><span>WhatsApp</span><b>↗</b></a>
       </div>
       <div class="contact-grid">
@@ -157,6 +157,114 @@
     </section>
   </main>
 
+  <section class="booking-shell" id="booking" role="dialog" aria-modal="true" aria-labelledby="booking-title" hidden>
+    <header class="booking-header">
+      <div class="booking-brand"><span>IB</span><b>BOOK A RIDE</b></div>
+      <div class="booking-progress" aria-label="Booking progress">
+        <span class="is-current">01</span><i></i><span>02</span><i></i><span>03</span>
+      </div>
+      <button class="booking-close" type="button" aria-label="Close booking experience"><span>Close</span><b>×</b></button>
+    </header>
+
+    <div class="booking-layout">
+      <div class="booking-stage">
+        <div class="booking-step is-active" data-booking-step="1">
+          <div class="booking-kicker"><span>01</span> Choose the experience</div>
+          <h2 id="booking-title">Choose<br><em>your line.</em></h2>
+          <p class="booking-lead">Every ride is shaped around the city, the moment and the people you share it with.</p>
+
+          <div class="ride-picker" role="list" aria-label="Ride experiences">
+            <button class="ride-choice is-selected" type="button" data-ride-choice="city" aria-pressed="true">
+              <img src="assets/night-ride.png" alt="" width="601" height="801">
+              <span class="ride-choice-shade"></span>
+              <span class="ride-choice-index">01 / SIGNATURE</span>
+              <span class="ride-choice-copy"><b>Ride Istanbul</b><small>City lights · Coast road · 90 min</small></span>
+              <span class="ride-choice-mark">✓</span>
+            </button>
+            <button class="ride-choice ride-choice-orange" type="button" data-ride-choice="group" aria-pressed="false">
+              <span class="ride-choice-index">02 / SOCIAL</span>
+              <span class="ride-choice-copy"><b>Ride Together</b><small>Private group · Curated route · 2 hr</small></span>
+              <span class="ride-choice-mark">+</span>
+            </button>
+            <button class="ride-choice" type="button" data-ride-choice="night" aria-pressed="false">
+              <img src="assets/red-bike.png" alt="" width="339" height="472">
+              <span class="ride-choice-shade"></span>
+              <span class="ride-choice-index">03 / AFTER DARK</span>
+              <span class="ride-choice-copy"><b>Night Shift</b><small>Bosphorus line · Photo stops · 90 min</small></span>
+              <span class="ride-choice-mark">+</span>
+            </button>
+          </div>
+        </div>
+
+        <div class="booking-step" data-booking-step="2">
+          <div class="booking-kicker"><span>02</span> Set the moment</div>
+          <h2>When do<br><em>we ride?</em></h2>
+          <p class="booking-lead">Pick a preferred date and departure window. The final route is tuned to the city and conditions.</p>
+
+          <div class="booking-fieldset">
+            <div class="booking-label"><span>Preferred date</span><small>Istanbul time / GMT+3</small></div>
+            <div class="date-picker" aria-label="Choose a preferred date"></div>
+          </div>
+          <div class="booking-fieldset">
+            <div class="booking-label"><span>Departure window</span><small>Subject to final confirmation</small></div>
+            <div class="time-picker" aria-label="Choose a departure time">
+              <button type="button" data-time="17:30">17:30 <small>Golden hour</small></button>
+              <button type="button" data-time="19:30">19:30 <small>City lights</small></button>
+              <button type="button" data-time="21:30">21:30 <small>After dark</small></button>
+            </div>
+          </div>
+          <div class="rider-count">
+            <div><span>Riders</span><small>One bike per rider</small></div>
+            <div class="counter"><button type="button" data-rider-minus aria-label="Remove rider">−</button><strong>1</strong><button type="button" data-rider-plus aria-label="Add rider">+</button></div>
+          </div>
+          <p class="booking-hint" aria-live="polite">Choose a date and time to continue.</p>
+        </div>
+
+        <form class="booking-step" data-booking-step="3" id="booking-form" novalidate>
+          <div class="booking-kicker"><span>03</span> Rider details</div>
+          <h2>Make it<br><em>yours.</em></h2>
+          <p class="booking-lead">A rider concierge would use these details to shape the route and confirm the experience.</p>
+
+          <div class="detail-fields">
+            <label><span>Your name</span><input type="text" name="name" autocomplete="name" placeholder="Full name" required></label>
+            <label><span>Phone / WhatsApp</span><input type="tel" name="phone" autocomplete="tel" placeholder="+90 ——— ——— ————" required></label>
+            <label class="field-wide"><span>Anything we should know?</span><textarea name="note" rows="3" placeholder="Riding level, gear needs, occasion…"></textarea></label>
+          </div>
+          <label class="gear-check"><input type="checkbox" name="gear"><span></span><b>I may need helmet or riding gear</b></label>
+          <p class="privacy-note"><i></i> Prototype mode — these details stay in this browser and are not sent anywhere.</p>
+        </form>
+
+        <div class="booking-step booking-success" data-booking-step="4">
+          <div class="success-orbit"><span>IB</span><i></i><i></i></div>
+          <div class="booking-kicker"><span>✓</span> Experience assembled</div>
+          <h2>Your road<br><em>is ready.</em></h2>
+          <p class="booking-lead">This is how a completed ride request would feel. A real booking would now be reviewed by the Istanbul Biker team.</p>
+          <div class="success-ticket">
+            <span>Preview request</span><strong>IB–2409</strong><small>No request was sent</small>
+          </div>
+          <div class="success-actions"><button type="button" data-booking-reset>Build another ride</button><button type="button" data-booking-done>Return to site ↗</button></div>
+        </div>
+
+        <div class="booking-nav">
+          <button class="booking-back" type="button" data-booking-back disabled>← Back</button>
+          <button class="booking-next" type="button" data-booking-next><span>Set the moment</span><b>↗</b></button>
+        </div>
+      </div>
+
+      <aside class="booking-summary" aria-label="Ride summary">
+        <figure><img src="assets/night-ride.png" alt="Selected Istanbul ride" width="601" height="801"><figcaption><span>LIVE SUMMARY</span><b>IB / RIDE 01</b></figcaption></figure>
+        <div class="summary-title"><span>Your ride</span><strong>Ride Istanbul</strong></div>
+        <dl>
+          <div><dt>Date</dt><dd data-summary-date>Choose a date</dd></div>
+          <div><dt>Departure</dt><dd data-summary-time>Choose a time</dd></div>
+          <div><dt>Riders</dt><dd data-summary-riders>01 rider</dd></div>
+        </dl>
+        <div class="summary-includes"><span>Included</span><p>Route curation · Rider briefing · Local host · Photo moments</p></div>
+        <div class="summary-status"><i></i><span>Nothing is charged or sent in prototype mode</span></div>
+      </aside>
+    </div>
+  </section>
+
   <footer class="site-footer">
     <div class="footer-brand">ISTANBUL <i>BIKER</i></div>
     <p>Motorcycle experience — Istanbul, Türkiye</p>
@@ -165,3 +273,4 @@
   <script src="script.js"></script>
 </body>
 </html>
+
